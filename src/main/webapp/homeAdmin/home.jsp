@@ -39,12 +39,17 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
+        <div class="search-container">
+            <form action="/hocvien?action=find" method="post">
+                <input type="text" placeholder="Search.." name="findName"/>
+            </form>
+        </div>
     </div>
 </nav>
 
 <div class="container" style="margin-top:30px">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <h2>About Me</h2>
             <h5>Photo of me:</h5>
             <div class="fakeimg">Fake Image</div>
@@ -67,11 +72,12 @@
             </ul>
             <hr class="d-sm-none">
         </div>
-        <div class="col-sm-8">
+<%--        ---------------------%>
+        <div class="col-sm-10">
             <div class="container">
                 <h2>THONG TIN HOC VIEN</h2>
-                <table class="table">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
                     <tr>
                         <th>ID Book</th>
                         <th>Name</th>
@@ -81,6 +87,8 @@
                         <th>trang thai</th>
                         <th>the loai</th>
                         <th>vi tri</th>
+                        <th>action</th>
+
                     </tr>
                     </thead>
                     <tbody>

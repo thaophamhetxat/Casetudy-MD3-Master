@@ -31,7 +31,7 @@ public class TaiLieuServlet extends HttpServlet {
 //                request.setAttribute("listClass", classService.listClass);
 //                requestDispatcher = request.getRequestDispatcher("/createHocVien.jsp");
 //                requestDispatcher.forward(request, response);
-
+                showCreateUser(request,response);
                 break;
             case "edit":
                 showEdit(request, response);
@@ -66,6 +66,8 @@ public class TaiLieuServlet extends HttpServlet {
         }
     }
 
+
+
     protected void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idBook = Integer.parseInt(request.getParameter("idBook"));
         String nameBook = request.getParameter("nameBook");
@@ -81,12 +83,18 @@ public class TaiLieuServlet extends HttpServlet {
         try {
             taiLieuService.save(taiLieu);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/createTaiLieu.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    protected void showCreateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
 
     protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idBookEdit = Integer.parseInt(request.getParameter("idBook"));
@@ -105,7 +113,7 @@ public class TaiLieuServlet extends HttpServlet {
         try {
             taiLieuService.edit(taiLieuEdit, index);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/editTaiLieu.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -126,7 +134,7 @@ public class TaiLieuServlet extends HttpServlet {
     protected void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int indexEdit = Integer.parseInt(request.getParameter("index"));
         request.setAttribute("tailieu", taiLieuService.listTaiLieu.get(indexEdit));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("editTaiLieu.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/editTaiLieu.jsp");
         requestDispatcher.forward(request, response);
     }
 

@@ -57,7 +57,7 @@ public class ManagerTaiLieu {
     }
 
     public static void edit(TaiLieu taiLieu) throws SQLException {
-        String edit = "update hocvien set nameBook=?,descriptionBook=?,image=?,publishingBook=?," +
+        String edit = "update books set nameBook=?,descriptionBook=?,image=?,publishingBook=?," +
                 "statusBook=?,categoryBook=?,locationBook=? where idBook=?";
         PreparedStatement preparedStatement = connection.prepareStatement(edit);
         preparedStatement.setString(1, taiLieu.getNameBook());
@@ -71,16 +71,16 @@ public class ManagerTaiLieu {
         preparedStatement.execute();
     }
 
-    public static void delete(String name) throws SQLException {
+    public static void delete(String nameBook) throws SQLException {
         String delete = "delete from books where nameBook=?";
         PreparedStatement preparedStatement = connection.prepareStatement(delete);
-        preparedStatement.setString(1, name);
+        preparedStatement.setString(1, nameBook);
         preparedStatement.execute();
     }
 
     public static ArrayList<TaiLieu> findByName(String findName) throws SQLException {
         ArrayList<TaiLieu> findList = new ArrayList<>();
-        String findByName = "select * from books where name like '%" + findName + "%'";
+        String findByName = "select * from books where nameBook like '%" + findName + "%'";
         PreparedStatement preparedStatement = connection.prepareStatement(findByName);
         ResultSet resultSet = preparedStatement.executeQuery();
 
