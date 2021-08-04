@@ -25,12 +25,11 @@ public class NguoiDungServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "homesp":
-                response.sendRedirect("homeND/homeND.jsp");
-                break;
             case "buy":
+                response.sendRedirect("homeND/buyND.jsp");
                 break;
             case "borrow":
+                response.sendRedirect("homeND/borrowND.jsp");
                 break;
             default:
                 request.setAttribute("listTaiLieuND", nguoiDungService.listTaiLieuND);
@@ -51,30 +50,44 @@ public class NguoiDungServlet extends HttpServlet {
                 break;
             case "borrow":
                 break;
-
+            case "find":
+                find(request, response);
+                break;
         }
     }
 
-    protected void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idBook = Integer.parseInt(request.getParameter("idBook"));
-        String nameBook = request.getParameter("nameBook");
-        String image = request.getParameter("image");
-        String publishingBook = request.getParameter("publishingBook");
-        int statusBook = Integer.parseInt(request.getParameter("statusBook"));
-        int categoryBook = Integer.parseInt(request.getParameter("categoryBook"));
+//    protected void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        int idBook = Integer.parseInt(request.getParameter("idBook"));
+//        String nameBook = request.getParameter("nameBook");
+//        String image = request.getParameter("image");
+//        String publishingBook = request.getParameter("publishingBook");
+//        int statusBook = Integer.parseInt(request.getParameter("statusBook"));
+//        int categoryBook = Integer.parseInt(request.getParameter("categoryBook"));
+//
+//
+//        TaiLieu taiLieu = new TaiLieu(idBook, nameBook, image,
+//                publishingBook,statusBook,categoryBook);
+//        try {
+//            nguoiDungService.buy(taiLieu);
+//            request.setAttribute("listTaiLieu", nguoiDungService.listTaiLieuND);
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
+//            requestDispatcher.forward(request, response);
+//        } catch (SQLException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-
-        TaiLieu taiLieu = new TaiLieu(idBook, nameBook, image,
-                publishingBook,statusBook,categoryBook);
+    protected void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String findName = request.getParameter("findName");
         try {
-            nguoiDungService.buy(taiLieu);
-            request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
+            request.setAttribute("listTaiLieuND", nguoiDungService.findByName(findName));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeND/homeND.jsp");
             requestDispatcher.forward(request, response);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
 
 }

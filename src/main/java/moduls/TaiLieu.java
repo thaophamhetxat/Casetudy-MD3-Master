@@ -10,13 +10,14 @@ public class TaiLieu {
     int categoryBook ;//thể loại
     int locationBook ;//vị trí
     int amount;
+    double price;
 
     public TaiLieu() {
     }
 
 
     public TaiLieu(int idBook, String nameBook, String descriptionBook, String image,
-                   String publishingBook, int statusBook, int categoryBook, int locationBook, int amount) {
+                   String publishingBook, int statusBook, int categoryBook, int locationBook, int amount, double price) {
         this.idBook = idBook;
         this.nameBook = nameBook;
         this.descriptionBook = descriptionBook;
@@ -26,6 +27,7 @@ public class TaiLieu {
         this.categoryBook = categoryBook;
         this.locationBook = locationBook;
         this.amount = amount;
+        this.price = price;
     }
 
     public TaiLieu(int idBook, String nameBook, String image,
@@ -109,5 +111,13 @@ public class TaiLieu {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

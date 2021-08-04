@@ -1,6 +1,7 @@
 package controller;
 
 import moduls.TaiLieu;
+import service.SelectService;
 import service.TaiLieuService;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,17 @@ import java.sql.SQLException;
 @WebServlet(name = "TaiLieuServlet", value = "/tailieu")
 public class TaiLieuServlet extends HttpServlet {
     TaiLieuService taiLieuService = new TaiLieuService();
+    SelectService selectService ;
+
+    {
+        try {
+            selectService = new SelectService();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +40,11 @@ public class TaiLieuServlet extends HttpServlet {
                 response.sendRedirect("homeND/homeND.jsp");
                 break;
             case "create":
-                response.sendRedirect("homeAdmin/createTaiLieu.jsp");
+                request.setAttribute("listStatus", selectService.listStatus);
+                request.setAttribute("listCategory", selectService.listCategory);
+                request.setAttribute("listLocation", selectService.listLocation);
+                requestDispatcher = request.getRequestDispatcher("homeAdmin/createTaiLieu.jsp");
+                requestDispatcher.forward(request, response);
                 break;
             case "edit":
                 showEdit(request, response);
@@ -74,9 +90,10 @@ public class TaiLieuServlet extends HttpServlet {
         int categoryBook = Integer.parseInt(request.getParameter("categoryBook"));
         int locationBook = Integer.parseInt(request.getParameter("locationBook"));
         int amount = Integer.parseInt(request.getParameter("amount"));
+        int price = Integer.parseInt(request.getParameter("price"));
 
         TaiLieu taiLieu = new TaiLieu(idBook, nameBook, descriptionBook,
-                image, publishingBook, statusBook,categoryBook,locationBook,amount);
+                image, publishingBook, statusBook,categoryBook,locationBook,amount,price);
         try {
             taiLieuService.save(taiLieu);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
@@ -99,9 +116,11 @@ public class TaiLieuServlet extends HttpServlet {
         int categoryBookEdit = Integer.parseInt(request.getParameter("categoryBook"));
         int locationBookEdit = Integer.parseInt(request.getParameter("locationBook"));
         int amountEdit = Integer.parseInt(request.getParameter("amount"));
+        int priceEdit = Integer.parseInt(request.getParameter("price"));
+
 
         TaiLieu taiLieuEdit = new TaiLieu(idBookEdit, nameBookEdit, descriptionBookEdit,
-                imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit,amountEdit);
+                imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit,amountEdit,priceEdit);
 
 
         try {

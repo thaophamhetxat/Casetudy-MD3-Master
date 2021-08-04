@@ -2,10 +2,7 @@ package dao;
 
 import moduls.TaiLieu;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class ManagerNguoiDung {
     }
 
     public static List<TaiLieu> showND() throws SQLException, ClassNotFoundException {
-        String select = "select distinct * from shownguoidung";
+        String select = "select idBook,nameBook,image,publishingBook,statusBook,categoryBook from books";
 
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(select);
@@ -39,5 +36,26 @@ public class ManagerNguoiDung {
                     statusBook, categoryBook));
         }
         return listTaiLieuND;
+    }
+
+    public static ArrayList<TaiLieu> findByName(String findName) throws SQLException {
+        ArrayList<TaiLieu> findListND = new ArrayList<>();
+        String findByName = "select * from books where nameBook like '%" + findName + "%'";
+        PreparedStatement preparedStatement = connection.prepareStatement(findByName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            int idBook = resultSet.getInt("idBook");
+            String nameBook = resultSet.getString("nameBook");
+            String image = resultSet.getString("image");
+            String publishingBook = resultSet.getString("publishingBook");
+            int statusBook = resultSet.getInt("statusBook");
+            int categoryBook = resultSet.getInt("categoryBook");
+
+            findListND.add(new TaiLieu(idBook, nameBook, image, publishingBook,
+                    statusBook, categoryBook));
+
+        }
+        return findListND;
     }
 }

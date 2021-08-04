@@ -44,21 +44,21 @@
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="/nguoidung?action=quit">Home Admin</a>
+    <a class="navbar-brand" href="/nguoidung?action=quit">HOME</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/tailieu?action=homeND">Home ND</a>
+                <a class="nav-link" href="/tailieu?action=buy">Buy</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/tailieu?action=create">New</a>
+                <a class="nav-link" href="/tailieu?action=borrow">Borrow</a>
             </li>
         </ul>
         <div class="search-container">
-            <form action="/tailieu?action=find" method="post">
+            <form action="/nguoidung?action=find" method="post">
                 <input type="text" placeholder="Search.." name="findName"/>
             </form>
         </div>

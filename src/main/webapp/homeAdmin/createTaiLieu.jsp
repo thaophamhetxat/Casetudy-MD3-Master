@@ -74,19 +74,47 @@
                         </tr>
                         <tr>
                             <th>trang thai</th>
-                            <td><input placeholder="enter statusBook" name="statusBook"></td>
+                            <td >
+                                <select name="statusBook">
+                                    <c:forEach items="${listStatus}" var="sbl">
+                                        <option value="${sbl.idStatus}">
+                                                ${sbl.nameStatus}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th>the loai</th>
-                            <td><input placeholder="enter categoryBook" name="categoryBook"></td>
+                            <td >
+                                <select name="categoryBook">
+                                    <c:forEach items="${listCategory}" var="sbl">
+                                        <option value="${sbl.idCategory}">
+                                                ${sbl.nameCategory}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th>vi tri</th>
-                            <td><input placeholder="enter locationBook" name="locationBook"></td>
+                            <td >
+                                <select name="locationBook">
+                                    <c:forEach items="${listLocation}" var="sbl">
+                                        <option value="${sbl.idLocation}">
+                                                ${sbl.nameLocation}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th>so luong</th>
                             <td><input placeholder="enter amount" name="amount"></td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td><input placeholder="enter price" name="price"></td>
                         </tr>
                     </table>
                     <button type="submit" class="btn btn-success">Create</button>

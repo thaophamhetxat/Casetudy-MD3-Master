@@ -18,7 +18,7 @@ public class NguoiDungService {
         }
     }
 
-//    public void save(TaiLieu taiLieu) throws SQLException, ClassNotFoundException {
+//    public void buy(TaiLieu taiLieu) throws SQLException, ClassNotFoundException {
 //        ManagerNguoiDung.create(taiLieu);
 //        listTaiLieuND = (ArrayList<TaiLieu>) ManagerTaiLieu.select();
 //    }
@@ -28,8 +28,8 @@ public class NguoiDungService {
 //        listTaiLieuND = (ArrayList<TaiLieu>) ManagerTaiLieu.select();
 //    }
 
-//    public ArrayList<TaiLieu> findByName(String name) throws SQLException {
-//        return ManagerNguoiDung.findByName(name);
-//
-//    }
+    public ArrayList<TaiLieu> findByName(String name) throws SQLException {
+        return ManagerNguoiDung.findByName(name);
+
+    }
 }

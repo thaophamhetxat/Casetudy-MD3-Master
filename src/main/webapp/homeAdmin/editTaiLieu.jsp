@@ -55,13 +55,14 @@
                 <tr>
                     <th>ID Book</th>
                     <th>Name</th>
-                    <th>Mo Ta</th>
-                    <th>anh</th>
-                    <th>nsx</th>
-                    <th>trang thai</th>
-                    <th>the loai</th>
-                    <th>vi tri</th>
-                    <th>amount</th>
+                    <th>MoTa</th>
+                    <th>Image</th>
+                    <th>NSX</th>
+                    <th>Status</th>
+                    <th>theLoai</th>
+                    <th>viTri</th>
+                    <th>SoLuong</th>
+                    <th>Price</th>
 
                 </tr>
                 </thead>
@@ -78,6 +79,7 @@
                     <td><input placeholder="nhap categoryBook" name="categoryBook" value="${tailieu.categoryBook}"></td>
                     <td><input placeholder="nhap locationBook" name="locationBook" value="${tailieu.locationBook}"></td>
                     <td><input placeholder="nhap amount" name="amount" value="${tailieu.amount}"></td>
+                    <td><input placeholder="nhap price" name="price" value="${tailieu.price}"></td>
                 </tr>
                 </tbody>
             </table>

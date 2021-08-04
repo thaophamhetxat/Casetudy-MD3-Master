@@ -73,13 +73,14 @@
                     <tr>
                         <th>ID Book</th>
                         <th>Name</th>
-                        <th>Mo Ta</th>
-                        <th>anh</th>
-                        <th>nsx</th>
-                        <th>trang thai</th>
-                        <th>the loai</th>
-                        <th>vi tri</th>
-                        <th>amount</th>
+                        <th>MoTa</th>
+                        <th>Image</th>
+                        <th>NSX</th>
+                        <th>Status</th>
+                        <th>theLoai</th>
+                        <th>viTri</th>
+                        <th>SoLuong</th>
+                        <th>Price</th>
 
                     </tr>
                     </thead>
@@ -95,6 +96,7 @@
                             <td>${tailieu.categoryBook}</td>
                             <td>${tailieu.locationBook}</td>
                             <td>${tailieu.amount}</td>
+                            <td>${tailieu.price}</td>
                             <td>
                                 <form>
                                     <a href="/tailieu?action=edit&index=${loop.index}" class="btn btn-warning">Edit</a>
