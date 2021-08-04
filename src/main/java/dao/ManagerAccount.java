@@ -1,5 +1,6 @@
 package dao;
 
+import com.mysql.cj.protocol.x.Notice;
 import moduls.Account;
 import moduls.TaiLieu;
 
@@ -37,9 +38,9 @@ public class ManagerAccount {
     public static void insert (Account account) throws SQLException {
         String insert = "insert into accounts(email,pass) values(?,?)";
         PreparedStatement prep = connection.prepareStatement(insert);
-
         prep.setString(1, account.getEmail());
         prep.setString(2, account.getPass());
         prep.execute();
     }
+
 }

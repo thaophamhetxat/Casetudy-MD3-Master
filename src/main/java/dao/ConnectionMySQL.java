@@ -11,7 +11,10 @@ public class ConnectionMySQL {
         String jdbcPassword = "aishiteiru123.@";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-
-        return connection;
+        if (connection != null) {
+            System.out.println("Kết nối thành công");
+            return connection;
+        }
+        return null;
     }
 }

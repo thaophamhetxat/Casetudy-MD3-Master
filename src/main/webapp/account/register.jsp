@@ -198,13 +198,13 @@
     <div class="noi-dung">
         <div class="form">
             <h2>Trang Đăng Ký</h2>
-            <form action="account?action=register" method="post">
+            <form action="account?action=register" method="post" id="formRegister">
                 <div class="input-form">
-                    <span>Địa chỉ email</span>
+                    <label for="email" id="email">Địa chỉ email</label>
                     <input type="text" name="email">
                 </div>
                 <div class="input-form">
-                    <span>Mật Khẩu</span>
+                    <label for="password" id="password">Mật Khẩu</label>
                     <input type="password" name="pass">
                 </div>
                 <div class="input-form">
@@ -219,5 +219,29 @@
     <!--Kết Thúc Phần Nội Dung-->
 </section>
 </body>
+<script type="text/javascript">
 
+    $(document).ready(function() {
+        $("#formRegister").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+
+                password: "required",
+            },
+
+            messages: {
+                email: {
+                    required: "Please enter email",
+                    email: "Please enter a valid email address"
+                },
+
+                password: "Please enter password"
+            }
+        });
+
+    });
+</script>
 </html>

@@ -15,6 +15,10 @@ public class Account {
         this.pass = pass;
     }
 
+    public Account() {
+
+    }
+
     public int getIdAccount() {
         return idAccount;
     }

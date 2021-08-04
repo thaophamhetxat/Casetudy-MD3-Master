@@ -24,15 +24,11 @@
         height: 100vh;
         display: flex;
     }
-
     section .img-bg{
         position: relative;
         width: 50%;
         height: 100%;
     }
-
-
-
     section .img-bg img{
         position: absolute;
         top: 0;
@@ -41,7 +37,6 @@
         height: 100%;
         object-fit: cover;
     }
-
     section .noi-dung{
         display: flex;
         justify-content: center;
@@ -49,12 +44,9 @@
         width: 50%;
         height: 100%;
     }
-
     section .noi-dung .form{
         width: 50%;
     }
-
-
     section .noi-dung .form h2{
         color: #607d8b;
         font-weight: 500;
@@ -66,12 +58,9 @@
         letter-spacing: 1px;
 
     }
-
     section .noi-dung .form .input-form{
         margin-bottom: 20px;
     }
-
-
     section .noi-dung .form .input-form span{
         font-size: 16px;
         margin-bottom: 5px;
@@ -194,7 +183,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -209,14 +203,15 @@
     <div class="noi-dung">
         <div class="form">
             <h2>Trang Đăng Nhập</h2>
-            <form action="">
+            <form action="account?action=login" method="post" id ="loginForm">
                 <div class="input-form">
-                    <span>Địa chỉ Email</span>
-                    <input type="text" name="">
+                   <label for="email" id="email">Địa chỉ Email</label>
+                    <input type="text" name="email">
                 </div>
                 <div class="input-form">
-                    <span>Mật Khẩu</span>
-                    <input type="password" name="">
+                    <label for="password" id="password">Mật Khẩu</label>
+                    <input type="password" name="pass">
+                    <br>${message}
                 </div>
                 <div class="nho-dang-nhap">
                     <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
@@ -224,10 +219,11 @@
                 <div class="input-form">
                     <input type="submit" value="Đăng Nhập">
                 </div>
-                <div class="input-form">
-                    <p>Bạn Chưa Có Tài Khoản? <a href="/account?action=register">Đăng Ký</a></p>
-                </div>
             </form>
+            <div class="input-form">
+                <p>Bạn Chưa Có Tài Khoản? <a href="/account?action=register">Đăng Ký</a></p>
+                <a href="/account?action=logout">Logout</a>
+            </div>
             <h3>Đăng Nhập Bằng Mạng Xã Hội</h3>
             <ul class="icon-dang-nhap">
                 <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
@@ -239,5 +235,29 @@
     <!--Kết Thúc Phần Nội Dung-->
 </section>
 </body>
+<script type="text/javascript">
 
+    $(document).ready(function() {
+        $("#loginForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+
+                password: "required",
+            },
+
+            messages: {
+                email: {
+                    required: "Please enter email",
+                    email: "Please enter a valid email address"
+                },
+
+                password: "Please enter password"
+            }
+        });
+
+    });
+</script>
 </html>
