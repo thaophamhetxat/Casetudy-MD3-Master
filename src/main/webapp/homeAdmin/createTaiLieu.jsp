@@ -76,7 +76,7 @@
         <div class="col-sm-10">
             <div class="container">
                 <h2>THONG TIN HOC VIEN</h2>
-                <form action="/home?action=create" method="post">
+                <form action="/tailieu?action=create" method="post">
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                     <tr>
@@ -88,6 +88,7 @@
                         <th>trang thai</th>
                         <th>the loai</th>
                         <th>vi tri</th>
+                        <th>so luong</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -100,6 +101,7 @@
                             <td><input placeholder="enter statusBook" name="statusBook"></td>
                             <td><input placeholder="enter categoryBook" name="categoryBook"></td>
                             <td><input placeholder="enter locationBook" name="locationBook"></td>
+                            <td><input placeholder="enter amount" name="amount"></td>
                         </tr>
                     </tbody>
                 </table>

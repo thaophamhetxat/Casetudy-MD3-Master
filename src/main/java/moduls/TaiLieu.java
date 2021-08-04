@@ -9,12 +9,14 @@ public class TaiLieu {
     int statusBook ;//trạng thái
     int categoryBook ;//thể loại
     int locationBook ;//vị trí
+    int amount;
 
     public TaiLieu() {
     }
 
-    public TaiLieu(int idBook, String nameBook, String descriptionBook, String image, String publishingBook,
-                   int statusBook, int categoryBook, int locationBook) {
+
+    public TaiLieu(int idBook, String nameBook, String descriptionBook, String image,
+                   String publishingBook, int statusBook, int categoryBook, int locationBook, int amount) {
         this.idBook = idBook;
         this.nameBook = nameBook;
         this.descriptionBook = descriptionBook;
@@ -23,7 +25,19 @@ public class TaiLieu {
         this.statusBook = statusBook;
         this.categoryBook = categoryBook;
         this.locationBook = locationBook;
+        this.amount = amount;
     }
+
+    public TaiLieu(int idBook, String nameBook, String image,
+                   String publishingBook, int statusBook, int categoryBook) {
+        this.idBook = idBook;
+        this.nameBook = nameBook;
+        this.image = image;
+        this.publishingBook = publishingBook;
+        this.statusBook = statusBook;
+        this.categoryBook = categoryBook;
+    }
+
 
     public int getIdBook() {
         return idBook;
@@ -87,5 +101,13 @@ public class TaiLieu {
 
     public void setLocationBook(int locationBook) {
         this.locationBook = locationBook;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

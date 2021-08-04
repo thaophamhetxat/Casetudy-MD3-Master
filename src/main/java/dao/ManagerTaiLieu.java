@@ -34,15 +34,16 @@ public class ManagerTaiLieu {
             int statusBook = resultSet.getInt("statusBook");
             int categoryBook = resultSet.getInt("categoryBook");
             int locationBook = resultSet.getInt("locationBook");
+            int amount = resultSet.getInt("amount");
 
             listTaiLieu.add(new TaiLieu(idBook, nameBook, descriptionBook, image, publishingBook,
-                    statusBook, categoryBook, locationBook));
+                    statusBook, categoryBook, locationBook,amount));
         }
         return listTaiLieu;
     }
 
     public static void create(TaiLieu taiLieu) throws SQLException {
-        String create = "insert into books value(?,?,?,?,?,?,?,?)";
+        String create = "insert into books value(?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(create);
         preparedStatement.setInt(1, taiLieu.getIdBook());
         preparedStatement.setString(2, taiLieu.getNameBook());
@@ -52,13 +53,14 @@ public class ManagerTaiLieu {
         preparedStatement.setInt(6, taiLieu.getStatusBook());
         preparedStatement.setInt(7, taiLieu.getCategoryBook());
         preparedStatement.setInt(8, taiLieu.getLocationBook());
+        preparedStatement.setInt(9, taiLieu.getAmount());
         preparedStatement.execute();
 
     }
 
     public static void edit(TaiLieu taiLieu) throws SQLException {
         String edit = "update books set nameBook=?,descriptionBook=?,image=?,publishingBook=?," +
-                "statusBook=?,categoryBook=?,locationBook=? where idBook=?";
+                "statusBook=?,categoryBook=?,locationBook=?,amount=? where idBook=?";
         PreparedStatement preparedStatement = connection.prepareStatement(edit);
         preparedStatement.setString(1, taiLieu.getNameBook());
         preparedStatement.setString(2, taiLieu.getDescriptionBook());
@@ -67,7 +69,8 @@ public class ManagerTaiLieu {
         preparedStatement.setInt(5, taiLieu.getStatusBook());
         preparedStatement.setInt(6, taiLieu.getCategoryBook());
         preparedStatement.setInt(7, taiLieu.getLocationBook());
-        preparedStatement.setInt(8, taiLieu.getIdBook());
+        preparedStatement.setInt(8, taiLieu.getAmount());
+        preparedStatement.setInt(9, taiLieu.getIdBook());
         preparedStatement.execute();
     }
 
@@ -93,9 +96,10 @@ public class ManagerTaiLieu {
             int statusBook = resultSet.getInt("statusBook");
             int categoryBook = resultSet.getInt("categoryBook");
             int locationBook = resultSet.getInt("locationBook");
+            int amount = resultSet.getInt("amount");
 
             findList.add(new TaiLieu(idBook, nameBook, descriptionBook, image, publishingBook,
-                    statusBook, categoryBook, locationBook));
+                    statusBook, categoryBook, locationBook,amount));
 
         }
         return findList;

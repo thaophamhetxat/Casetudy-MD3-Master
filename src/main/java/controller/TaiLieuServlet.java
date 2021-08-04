@@ -24,9 +24,9 @@ public class TaiLieuServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-//            case "homesp":
-//                response.sendRedirect("SanPham/showSanPham.jsp");
-//                break;
+            case "homeND":
+                response.sendRedirect("homeND/homeND.jsp");
+                break;
             case "create":
 //                request.setAttribute("listClass", classService.listClass);
 //                requestDispatcher = request.getRequestDispatcher("/createHocVien.jsp");
@@ -77,9 +77,10 @@ public class TaiLieuServlet extends HttpServlet {
         int statusBook = Integer.parseInt(request.getParameter("statusBook"));
         int categoryBook = Integer.parseInt(request.getParameter("categoryBook"));
         int locationBook = Integer.parseInt(request.getParameter("locationBook"));
+        int amount = Integer.parseInt(request.getParameter("amount"));
 
         TaiLieu taiLieu = new TaiLieu(idBook, nameBook, descriptionBook,
-                image, publishingBook, statusBook,categoryBook,locationBook);
+                image, publishingBook, statusBook,categoryBook,locationBook,amount);
         try {
             taiLieuService.save(taiLieu);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
@@ -105,9 +106,10 @@ public class TaiLieuServlet extends HttpServlet {
         int statusBookEdit = Integer.parseInt(request.getParameter("statusBook"));
         int categoryBookEdit = Integer.parseInt(request.getParameter("categoryBook"));
         int locationBookEdit = Integer.parseInt(request.getParameter("locationBook"));
+        int amountEdit = Integer.parseInt(request.getParameter("amount"));
 
         TaiLieu taiLieuEdit = new TaiLieu(idBookEdit, nameBookEdit, descriptionBookEdit,
-                imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit);
+                imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit,amountEdit);
 
         int index = Integer.parseInt(request.getParameter("index"));
         try {
