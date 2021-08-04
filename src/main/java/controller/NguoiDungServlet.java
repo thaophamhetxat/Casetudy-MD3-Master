@@ -1,5 +1,7 @@
 package controller;
 
+import moduls.TaiLieu;
+import service.NguoiDungService;
 import service.TaiLieuService;
 
 import javax.servlet.RequestDispatcher;
@@ -9,10 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "NguoiDungServlet", value = "/nguoidung")
 public class NguoiDungServlet extends HttpServlet {
-    TaiLieuService taiLieuService = new TaiLieuService();
+    NguoiDungService nguoiDungService = new NguoiDungService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,24 +30,12 @@ public class NguoiDungServlet extends HttpServlet {
                 break;
             case "buy":
                 break;
-            case "brorow":
+            case "borrow":
                 break;
-//            case "create":
-//                request.setAttribute("listClass", classService.listClass);
-//                requestDispatcher = request.getRequestDispatcher("/createHocVien.jsp");
-//                requestDispatcher.forward(request, response);
-//                showCreateUser(request, response);
-//                break;
-//            case "edit":
-//                showEdit(request, response);
-//                break;
-//            case "delete":
-//                delete(request, response);
-//                break;
-//            default:
-//                request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-//                requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
-//                requestDispatcher.forward(request, response);
+            default:
+                request.setAttribute("listTaiLieuND", nguoiDungService.listTaiLieuND);
+                requestDispatcher = request.getRequestDispatcher("homeND/homeND.jsp");
+                requestDispatcher.forward(request, response);
         }
     }
 
@@ -56,19 +47,34 @@ public class NguoiDungServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-//            case "create":
-//                create(request, response);
-//                break;
-//            case "edit":
-//                edit(request, response);
-//                break;
-//            case "find":
-//                find(request, response);
-//                break;
+            case "buy":
+                break;
+            case "borrow":
+                break;
+
         }
     }
 
+    protected void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idBook = Integer.parseInt(request.getParameter("idBook"));
+        String nameBook = request.getParameter("nameBook");
+        String image = request.getParameter("image");
+        String publishingBook = request.getParameter("publishingBook");
+        int statusBook = Integer.parseInt(request.getParameter("statusBook"));
+        int categoryBook = Integer.parseInt(request.getParameter("categoryBook"));
 
+
+        TaiLieu taiLieu = new TaiLieu(idBook, nameBook, image,
+                publishingBook,statusBook,categoryBook);
+        try {
+            nguoiDungService.buy(taiLieu);
+            request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

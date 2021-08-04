@@ -7,11 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManagerNguoiDung {
     static Connection connection;
-    static ArrayList<TaiLieu> listTaiLieuND = new ArrayList<>();
-
     static {
         try {
             connection = ConnectionMySQL.getConnect();
@@ -22,12 +21,12 @@ public class ManagerNguoiDung {
         }
     }
 
-    public static ArrayList<TaiLieu> select() throws SQLException, ClassNotFoundException {
-        String select = "select * from books";
+    public static List<TaiLieu> showND() throws SQLException, ClassNotFoundException {
+        String select = "select distinct * from shownguoidung";
 
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(select);
-
+        ArrayList<TaiLieu> listTaiLieuND = new ArrayList<>();
         while (resultSet.next()) {
             int idBook = resultSet.getInt("idBook");
             String nameBook = resultSet.getString("nameBook");

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,78 +41,61 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
-        <div class="search-container">
-            <form action="/hocvien?action=find" method="post">
-                <input type="text" placeholder="Search.." name="findName"/>
-            </form>
-        </div>
     </div>
 </nav>
 
 <div class="container" style="margin-top:30px">
-    <div class="row">
-        <div class="col-sm-2">
-            <h2>About Me</h2>
-            <h5>Photo of me:</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            <h3>Some Links</h3>
-            <p>Lorem ipsum dolor sit ame.</p>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/tailieu?action=create" class="btn btn-success">Create</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <hr class="d-sm-none">
-        </div>
-        <%--        ---------------------%>
-        <div class="col-sm-10">
-            <div class="container">
-                <h2>THONG TIN HOC VIEN</h2>
-                <form action="/tailieu?action=create" method="post">
-                <table class="table table-bordered">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>ID Book</th>
-                        <th>Name</th>
-                        <th>Mo Ta</th>
-                        <th>anh</th>
-                        <th>nsx</th>
-                        <th>trang thai</th>
-                        <th>the loai</th>
-                        <th>vi tri</th>
-                        <th>so luong</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+    <div class="col-sm-12">
+        <div class="container">
+            <h2>THEM TAI LIEU</h2>
+            <form action="/tailieu?action=create" method="post">
+                <fieldset>
+                    <table class="table">
+                        <thead class="thead-dark">
                         <tr>
+                            <th>ID Book</th>
                             <td><input placeholder="enter idBook" name="idBook"></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
                             <td><input placeholder="enter nameBook" name="nameBook"></td>
+                        </tr>
+                        <tr>
+                            <th>Mo Ta</th>
                             <td><input placeholder="enter descriptionBook" name="descriptionBook"></td>
+                        </tr>
+                        <tr>
+                            <th>anh</th>
                             <td><input placeholder="enter image" name="image"></td>
+                        </tr>
+                        <tr>
+                            <th>nsx</th>
                             <td><input placeholder="enter publishingBook" name="publishingBook"></td>
+                        </tr>
+                        <tr>
+                            <th>trang thai</th>
                             <td><input placeholder="enter statusBook" name="statusBook"></td>
+                        </tr>
+                        <tr>
+                            <th>the loai</th>
                             <td><input placeholder="enter categoryBook" name="categoryBook"></td>
+                        </tr>
+                        <tr>
+                            <th>vi tri</th>
                             <td><input placeholder="enter locationBook" name="locationBook"></td>
+                        </tr>
+                        <tr>
+                            <th>so luong</th>
                             <td><input placeholder="enter amount" name="amount"></td>
                         </tr>
-                    </tbody>
-                </table>
-                <button type="submit" class="btn btn-success">Create</button>
-                <a href="/tailieu?action=quit" class="btn btn-secondary">Quit</a>
-                </form>
-            </div>
+                    </table>
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <a href="/tailieu?action=quit" class="btn btn-secondary">Quit</a>
+                </fieldset>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">

@@ -4,10 +4,11 @@ import moduls.TaiLieu;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManagerTaiLieu {
     static Connection connection;
-    static ArrayList<TaiLieu> listTaiLieu = new ArrayList<>();
+
 
     static {
         try {
@@ -19,11 +20,12 @@ public class ManagerTaiLieu {
         }
     }
 
-    public static ArrayList<TaiLieu> select() throws SQLException, ClassNotFoundException {
+    public static List<TaiLieu> showTaiLieu() throws SQLException, ClassNotFoundException {
         String select = "select * from books";
 
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(select);
+        ArrayList<TaiLieu> listTaiLieu = new ArrayList<>();
 
         while (resultSet.next()) {
             int idBook = resultSet.getInt("idBook");
@@ -42,9 +44,10 @@ public class ManagerTaiLieu {
         return listTaiLieu;
     }
 
-    public static void create(TaiLieu taiLieu) throws SQLException {
-        String create = "insert into books value(?,?,?,?,?,?,?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(create);
+
+    public static void saveTaiLieu(TaiLieu taiLieu) throws SQLException {
+        String sqlsave = "insert into books value(?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlsave);
         preparedStatement.setInt(1, taiLieu.getIdBook());
         preparedStatement.setString(2, taiLieu.getNameBook());
         preparedStatement.setString(3, taiLieu.getDescriptionBook());
@@ -54,14 +57,15 @@ public class ManagerTaiLieu {
         preparedStatement.setInt(7, taiLieu.getCategoryBook());
         preparedStatement.setInt(8, taiLieu.getLocationBook());
         preparedStatement.setInt(9, taiLieu.getAmount());
+
         preparedStatement.execute();
 
     }
 
-    public static void edit(TaiLieu taiLieu) throws SQLException {
-        String edit = "update books set nameBook=?,descriptionBook=?,image=?,publishingBook=?," +
+    public static void editTaiLieu(TaiLieu taiLieu) throws SQLException {
+        String sqledit = "update books set nameBook=?,descriptionBook=?,image=?,publishingBook=?," +
                 "statusBook=?,categoryBook=?,locationBook=?,amount=? where idBook=?";
-        PreparedStatement preparedStatement = connection.prepareStatement(edit);
+        PreparedStatement preparedStatement = connection.prepareStatement(sqledit);
         preparedStatement.setString(1, taiLieu.getNameBook());
         preparedStatement.setString(2, taiLieu.getDescriptionBook());
         preparedStatement.setString(3, taiLieu.getImage());
@@ -74,10 +78,10 @@ public class ManagerTaiLieu {
         preparedStatement.execute();
     }
 
-    public static void delete(String nameBook) throws SQLException {
-        String delete = "delete from books where nameBook=?";
+    public static void deleteTaiLieu(int idBook) throws SQLException {
+        String delete = "delete from books where idBook=?";
         PreparedStatement preparedStatement = connection.prepareStatement(delete);
-        preparedStatement.setString(1, nameBook);
+        preparedStatement.setInt(1, idBook);
         preparedStatement.execute();
     }
 

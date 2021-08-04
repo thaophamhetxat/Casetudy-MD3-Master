@@ -28,10 +28,7 @@ public class TaiLieuServlet extends HttpServlet {
                 response.sendRedirect("homeND/homeND.jsp");
                 break;
             case "create":
-//                request.setAttribute("listClass", classService.listClass);
-//                requestDispatcher = request.getRequestDispatcher("/createHocVien.jsp");
-//                requestDispatcher.forward(request, response);
-                showCreateUser(request,response);
+                response.sendRedirect("homeAdmin/createTaiLieu.jsp");
                 break;
             case "edit":
                 showEdit(request, response);
@@ -41,7 +38,7 @@ public class TaiLieuServlet extends HttpServlet {
                 break;
             default:
                 request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-                requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
+                requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
                 requestDispatcher.forward(request, response);
         }
     }
@@ -49,7 +46,6 @@ public class TaiLieuServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        RequestDispatcher requestDispatcher;
         if (action == null) {
             action = "";
         }
@@ -84,20 +80,16 @@ public class TaiLieuServlet extends HttpServlet {
         try {
             taiLieuService.save(taiLieu);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/createTaiLieu.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
             requestDispatcher.forward(request, response);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    protected void showCreateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
-        requestDispatcher.forward(request, response);
-    }
-
 
     protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         int idBookEdit = Integer.parseInt(request.getParameter("idBook"));
         String nameBookEdit = request.getParameter("nameBook");
         String descriptionBookEdit = request.getParameter("descriptionBook");
@@ -111,13 +103,13 @@ public class TaiLieuServlet extends HttpServlet {
         TaiLieu taiLieuEdit = new TaiLieu(idBookEdit, nameBookEdit, descriptionBookEdit,
                 imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit,amountEdit);
 
-        int index = Integer.parseInt(request.getParameter("index"));
+
         try {
-            taiLieuService.edit(taiLieuEdit, index);
+            taiLieuService.edit(taiLieuEdit);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/editTaiLieu.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
             requestDispatcher.forward(request, response);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -128,7 +120,7 @@ public class TaiLieuServlet extends HttpServlet {
         try {
             taiLieuService.delete(index);
             response.sendRedirect("/tailieu");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -136,7 +128,7 @@ public class TaiLieuServlet extends HttpServlet {
     protected void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int indexEdit = Integer.parseInt(request.getParameter("index"));
         request.setAttribute("tailieu", taiLieuService.listTaiLieu.get(indexEdit));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/editTaiLieu.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/editTaiLieu.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -144,7 +136,7 @@ public class TaiLieuServlet extends HttpServlet {
         String findName = request.getParameter("findName");
         try {
             request.setAttribute("listTaiLieu", taiLieuService.findByName(findName));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homeAdmin/home.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();

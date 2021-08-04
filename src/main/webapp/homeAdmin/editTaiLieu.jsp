@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +39,7 @@
             </li>
         </ul>
         <div class="search-container">
-            <form action="/hocvien?action=find" method="post">
+            <form action="/tailieu?action=find" method="post">
                 <input type="text" placeholder="Search.." name="findName"/>
             </form>
         </div>

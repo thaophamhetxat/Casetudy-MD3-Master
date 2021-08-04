@@ -12,27 +12,27 @@ public class TaiLieuService {
 
     public TaiLieuService() {
         try {
-            listTaiLieu = (ArrayList<TaiLieu>) ManagerTaiLieu.select();
+            listTaiLieu = (ArrayList<TaiLieu>) ManagerTaiLieu.showTaiLieu();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void save(TaiLieu taiLieu) throws SQLException {
-        ManagerTaiLieu.create(taiLieu);
-        listTaiLieu.add(taiLieu);
+
+    public void save(TaiLieu taiLieu) throws SQLException, ClassNotFoundException {
+        ManagerTaiLieu.saveTaiLieu(taiLieu);
+        listTaiLieu= (ArrayList<TaiLieu>) ManagerTaiLieu.showTaiLieu();
     }
 
-    public void edit(TaiLieu taiLieu, int index) throws SQLException {
-        ManagerTaiLieu.edit(taiLieu);
-        listTaiLieu.set(index, taiLieu);
+    public void edit(TaiLieu taiLieu) throws SQLException, ClassNotFoundException {
+        ManagerTaiLieu.editTaiLieu(taiLieu);
+        listTaiLieu=(ArrayList<TaiLieu>)ManagerTaiLieu.showTaiLieu();
     }
 
-    public void delete(int index) throws SQLException {
-        ManagerTaiLieu.delete(listTaiLieu.get(index).getNameBook());
-        listTaiLieu.remove(index);
+    public void delete(int index) throws SQLException, ClassNotFoundException {
+        ManagerTaiLieu.deleteTaiLieu(listTaiLieu.get(index).getIdBook());
+        listTaiLieu= (ArrayList<TaiLieu>) ManagerTaiLieu.showTaiLieu();
     }
-
 
     public ArrayList<TaiLieu> findByName(String name) throws SQLException {
         return ManagerTaiLieu.findByName(name);
