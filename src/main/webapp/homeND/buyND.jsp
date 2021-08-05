@@ -75,7 +75,7 @@
         <%--        -----%>
         <div class="col-sm-10">
             <div class="container">
-                <h2>Thông tin sách</h2>
+                <h2>chon mua san pham</h2>
                 <form method="post">
                     <table class="table">
                         <thead>

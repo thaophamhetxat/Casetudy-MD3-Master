@@ -41,6 +41,19 @@ public class TaiLieu {
     }
 
 
+    public TaiLieu(int idBook, String nameBook, String image,
+                   String publishingBook, int statusBook, int categoryBook, int amount) {
+        this.idBook = idBook;
+        this.nameBook = nameBook;
+        this.image = image;
+        this.publishingBook = publishingBook;
+        this.statusBook = statusBook;
+        this.categoryBook = categoryBook;
+        this.amount = amount;
+    }
+
+
+
     public int getIdBook() {
         return idBook;
     }

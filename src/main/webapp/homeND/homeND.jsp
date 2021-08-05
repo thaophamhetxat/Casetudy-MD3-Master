@@ -51,10 +51,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/tailieu?action=buy">Buy</a>
+                <a class="nav-link" href="/nguoidung?action=buyND">Buy</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/tailieu?action=borrow">Borrow</a>
+                <a class="nav-link" href="/nguoidung?action=borrowND">Borrow</a>
             </li>
         </ul>
         <div class="search-container">
@@ -114,8 +114,8 @@
                             <td>${homeND.publishingBook}</td>
                             <td>${homeND.statusBook}</td>
                             <td>${homeND.categoryBook}</td>
-                            <td><a href="/nguoidung?action=buy" class="btn btn-warning">muon</a></td>
-                            <td><a href="/nguoidung?action=borrow" class="btn btn-danger">mua</a></td>
+                            <td><a href="/nguoidung?action=buy&index=${loop.index}" class="btn btn-warning">Buy</a></td>
+                            <td><a href="/nguoidung?action=borrow&index=${loop.index}" class="btn btn-danger">Borrow</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

@@ -1,6 +1,8 @@
 package controller;
 
+import dao.ManagerTaiLieu;
 import moduls.TaiLieu;
+import service.NguoiDungService;
 import service.SelectService;
 import service.TaiLieuService;
 
@@ -12,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "TaiLieuServlet", value = "/tailieu")
 public class TaiLieuServlet extends HttpServlet {
     TaiLieuService taiLieuService = new TaiLieuService();
+    NguoiDungService nguoiDungService = new NguoiDungService();
     SelectService selectService ;
 
     {
@@ -36,6 +40,7 @@ public class TaiLieuServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+
             case "homeND":
                 response.sendRedirect("homeND/homeND.jsp");
                 break;
@@ -47,6 +52,9 @@ public class TaiLieuServlet extends HttpServlet {
                 requestDispatcher.forward(request, response);
                 break;
             case "edit":
+                request.setAttribute("listStatus", selectService.listStatus);
+                request.setAttribute("listCategory", selectService.listCategory);
+                request.setAttribute("listLocation", selectService.listLocation);
                 showEdit(request, response);
                 break;
             case "delete":
@@ -96,6 +104,7 @@ public class TaiLieuServlet extends HttpServlet {
                 image, publishingBook, statusBook,categoryBook,locationBook,amount,price);
         try {
             taiLieuService.save(taiLieu);
+            request.setAttribute("listTaiLieuND",nguoiDungService.listTaiLieuND);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("homeAdmin/homeAD.jsp");
             requestDispatcher.forward(request, response);
@@ -118,11 +127,8 @@ public class TaiLieuServlet extends HttpServlet {
         int amountEdit = Integer.parseInt(request.getParameter("amount"));
         int priceEdit = Integer.parseInt(request.getParameter("price"));
 
-
         TaiLieu taiLieuEdit = new TaiLieu(idBookEdit, nameBookEdit, descriptionBookEdit,
                 imageEdit, publishingBookEdit, statusBookEdit,categoryBookEdit,locationBookEdit,amountEdit,priceEdit);
-
-
         try {
             taiLieuService.edit(taiLieuEdit);
             request.setAttribute("listTaiLieu", taiLieuService.listTaiLieu);

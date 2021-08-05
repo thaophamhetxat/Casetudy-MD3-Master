@@ -68,18 +68,71 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input placeholder="nhap idBook" name="idBook" value="${tailieu.idBook}"></td>
-                    <td><input placeholder="nhap nameBook" name="nameBook" value="${tailieu.nameBook}"></td>
-                    <td><input placeholder="nhap descriptionBook" name="descriptionBook"
+
+                    <th>ID Book</th>
+                    <td><input placeholder="enter idBook" name="idBook" value="${tailieu.idBook}"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td><input placeholder="enter nameBook" name="nameBook" value="${tailieu.nameBook}"></td>
+                </tr>
+                <tr>
+                    <th>Mo Ta</th>
+                    <td><input placeholder="enter descriptionBook" name="descriptionBook"
                                value="${tailieu.descriptionBook}"></td>
-                    <td><input placeholder="nhap image" name="image" value="${nhanvien.image}"></td>
-                    <td><input placeholder="nhap publishingBook" name="publishingBook"
+                </tr>
+                <tr>
+                    <th>anh</th>
+                    <td><input placeholder="enter image" name="image" value="${tailieu.image}"></td>
+                </tr>
+                <tr>
+                    <th>nsx</th>
+                    <td><input placeholder="enter publishingBook" name="publishingBook"
                                value="${tailieu.publishingBook}"></td>
-                    <td><input placeholder="nhap statusBook" name="statusBook" value="${tailieu.statusBook}"></td>
-                    <td><input placeholder="nhap categoryBook" name="categoryBook" value="${tailieu.categoryBook}"></td>
-                    <td><input placeholder="nhap locationBook" name="locationBook" value="${tailieu.locationBook}"></td>
-                    <td><input placeholder="nhap amount" name="amount" value="${tailieu.amount}"></td>
-                    <td><input placeholder="nhap price" name="price" value="${tailieu.price}"></td>
+                </tr>
+                <tr>
+                    <th>trang thai</th>
+                    <td>
+                        <select name="statusBook" >
+                            <c:forEach items="${listStatus}" var="sbl">
+                                <option value="${sbl.idStatus}">
+                                        ${sbl.nameStatus}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>the loai</th>
+                    <td>
+                        <select name="categoryBook" >
+                            <c:forEach items="${listCategory}" var="sbl">
+                                <option value="${sbl.idCategory}">
+                                        ${sbl.nameCategory}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vi tri</th>
+                    <td>
+                        <select name="locationBook" >
+                            <c:forEach items="${listLocation}" var="sbl">
+                                <option value="${sbl.idLocation}">
+                                        ${sbl.nameLocation}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>so luong</th>
+                    <td><input placeholder="enter amount" name="amount" value="${tailieu.amount}"></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td><input placeholder="enter price" name="price" value="${tailieu.price}"></td>
                 </tr>
                 </tbody>
             </table>
