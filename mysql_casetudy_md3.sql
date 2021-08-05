@@ -30,9 +30,14 @@ nameLocation nvarchar(50)
 );
 
 CREATE TABLE accounts (
-  idAccount int(10) NOT NULL AUTO_INCREMENT,
-  email varchar(50) DEFAULT NULL,
-  pass varchar(50) DEFAULT NULL,
-  PRIMARY KEY (idAccount)
-);
+    idAccount int NOT NULL AUTO_INCREMENT,
+     email varchar(50) DEFAULT NULL,
+    pass varchar(50) DEFAULT NULL,
+    name varchar(45) DEFAULT NULL,
+    date varchar(20) DEFAULT NULL,
+    address varchar(45) DEFAULT NULL,
+    phone int DEFAULT NULL,
+    img varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`idAccount`)
+)
 
