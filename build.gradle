@@ -18,6 +18,10 @@ dependencies {
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+<<<<<<< HEAD
+=======
+    implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+>>>>>>> aa2d7b7c0c01c4c5e77d7cdd322d0865e0dc7540
 }
 
 test {
