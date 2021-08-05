@@ -13,9 +13,9 @@
 <body>
 <div style="text-align: center">
     <h1>Welcome to Bookshop Website Admin Panel</h1>
-    <b>(${acc.email})</b>
+    <b>Hello: (${acc.name})</b>
     <br><br>
-    <a href="/logout">Logout</a>
+    <a href="/account?action=logout">Logout</a>
 </div>
 </body>
 </html>

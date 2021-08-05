@@ -44,12 +44,12 @@ public class AccountServlet extends HttpServlet {
             case "logout" -> {
                 HttpSession session = req.getSession(false);
                 if (session != null) {
-                    session.removeAttribute("email");
-
+                    session.removeAttribute("acc");
                     RequestDispatcher dispatcher = req.getRequestDispatcher("account/login.jsp");
                     dispatcher.forward(req, resp);
                 }
             }
+
             default -> {
                 req.setAttribute("listAccount", accountService.list);
                 requestDispatcher = req.getRequestDispatcher("/account/login.jsp");
@@ -70,8 +70,13 @@ public class AccountServlet extends HttpServlet {
             case "register" -> {
                 String email = req.getParameter("email");
                 String pass = req.getParameter("pass");
+                String name = req.getParameter("name");
+                String date = req.getParameter("date");
+                String address = req.getParameter("address");
+                int phone = Integer.parseInt(req.getParameter("phone"));
+                String img = req.getParameter("img");
 
-                Account account = new Account(email,pass);
+                Account account = new Account(email,pass,name,date,address,phone,img);
                 try {
                     accountService.save(account);
                 } catch (SQLException throwables) {

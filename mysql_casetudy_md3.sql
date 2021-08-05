@@ -28,3 +28,11 @@ create table location(
 idLocation int primary key,
 nameLocation nvarchar(50)
 );
+
+CREATE TABLE accounts (
+  idAccount int(10) NOT NULL AUTO_INCREMENT,
+  email varchar(50) DEFAULT NULL,
+  pass varchar(50) DEFAULT NULL,
+  PRIMARY KEY (idAccount)
+);
+

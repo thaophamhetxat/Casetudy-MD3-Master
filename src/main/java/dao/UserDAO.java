@@ -24,6 +24,7 @@ public class UserDAO {
             account.setIdAccount(id);
             account.setEmail(email);
             account.setPass(password);
+            account.setName(result.getString("name"));
             return account;
         }
         return null;

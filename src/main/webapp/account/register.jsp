@@ -183,7 +183,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -206,6 +211,26 @@
                 <div class="input-form">
                     <label for="password" id="password">Mật Khẩu</label>
                     <input type="password" name="pass">
+                </div>
+                <div class="input-form">
+                    <label>Họ tên</label>
+                    <input type="text" name="name">
+                </div>
+                <div class="input-form">
+                    <label>Ngày sinh</label>
+                    <input type="text" name="date">
+                </div>
+                <div class="input-form">
+                    <label >Địa chỉ</label>
+                    <input type="text" name="address">
+                </div>
+                <div class="input-form">
+                    <label >Số điện thoại</label>
+                    <input type="text" name="phone">
+                </div>
+                <div class="input-form">
+                    <label>Ảnh</label>
+                    <input type="text" name="img">
                 </div>
                 <div class="input-form">
                     <input type="submit" value="Đăng Ký">

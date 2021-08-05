@@ -202,6 +202,7 @@
     <!--Bắt Đầu Phần Nội Dung-->
     <div class="noi-dung">
         <div class="form">
+            <h1 style="color: red">${messagelog}</h1><br>
             <h2>Trang Đăng Nhập</h2>
             <form action="account?action=login" method="post" id ="loginForm">
                 <div class="input-form">
@@ -222,7 +223,7 @@
             </form>
             <div class="input-form">
                 <p>Bạn Chưa Có Tài Khoản? <a href="/account?action=register">Đăng Ký</a></p>
-                <a href="/account?action=logout">Logout</a>
+
             </div>
             <h3>Đăng Nhập Bằng Mạng Xã Hội</h3>
             <ul class="icon-dang-nhap">
@@ -254,7 +255,9 @@
                     email: "Please enter a valid email address"
                 },
 
-                password: "Please enter password"
+                password: {
+                    required: "Please enter password"
+                }
             }
         });
 
