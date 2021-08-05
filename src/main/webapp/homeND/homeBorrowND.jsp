@@ -85,7 +85,7 @@
                             <td>${giohang.nameND}</td>
                             <td>${giohang.idBook}</td>
                             <td>${giohang.nameBook}</td>
-                            <td>${giohang.image}</td>
+                            <td><img src="${giohang.image}" width="100" height="100"></td>
                             <td>${giohang.dateND}</td>
                             <td>${giohang.statusBook}</td>
                             <td>${giohang.categoryBook}</td>

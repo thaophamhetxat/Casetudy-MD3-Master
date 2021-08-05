@@ -90,7 +90,7 @@
                             <td>${tailieu.idBook}</td>
                             <td>${tailieu.nameBook}</td>
                             <td>${tailieu.descriptionBook}</td>
-                            <td>${tailieu.image}</td>
+                            <td><img src="${tailieu.image}" width="100" height="100"></td>
                             <td>${tailieu.publishingBook}</td>
                             <td>${tailieu.statusBook}</td>
                             <td>${tailieu.categoryBook}</td>

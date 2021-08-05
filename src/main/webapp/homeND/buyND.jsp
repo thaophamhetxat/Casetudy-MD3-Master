@@ -92,7 +92,7 @@
                         <tr>
                             <td>${homeND.idBook}</td>
                             <td>${homeND.nameBook}</td>
-                            <td>${homeND.image}</td>
+                            <td><img src="${homeND.image}" width="100" height="100"></td>
                             <td>${homeND.publishingBook}</td>
                             <td>${homeND.statusBook}</td>
                             <td>${homeND.categoryBook}</td>
